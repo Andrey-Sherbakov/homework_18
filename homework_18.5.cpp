@@ -8,6 +8,7 @@ public:
 
     void push(int x)
     {
+        
         num++;
         p[num] = x;
     }
@@ -87,6 +88,7 @@ int main()
         else if (a == 4)
         {
             stack->end();
+            delete stack;
         }
     } while (a != 4);
     
