@@ -6,7 +6,7 @@ class Stack
 {
 private:
     int a;
-	int size;
+    int size;
 	int* p;
 
 public:
@@ -16,6 +16,16 @@ public:
         size = 0;
         p = new int[size];
     };
+
+    void CreateArray()
+    {
+        int* arr = new int[size];
+        for (int i = size - 1; i >= 0; i--)
+        {
+            arr[i] = p[i];
+        }
+        p = arr;
+    }
  
 
 
@@ -30,6 +40,7 @@ public:
         else
         {
             size++;
+            CreateArray();
             p[size] = x;
             a++;
         }
@@ -67,12 +78,6 @@ public:
         }
     }
 
-    void end()
-    {
-        delete p;
-    }
-
-
     
 };
 
@@ -108,10 +113,7 @@ int main()
         {
             stack.show();
         }
-        else if (a == 4)
-        {
-            //stack.end();
-        }
+       
     } while (a != 4);
     
     return 0;
