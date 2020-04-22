@@ -4,34 +4,58 @@ using namespace std;
 
 class Stack
 {
+private:
+    int a;
+	int size;
+	int* p;
+
 public:
+    Stack() 
+    {
+        a = -1;
+        size = 0;
+        p = new int[size];
+    };
+ 
+
 
     void push(int x)
     {
+        if (a == -1)
+        {
+            p[size] = x;
+            a++;
+
+        }
+        else
+        {
+            size++;
+            p[size] = x;
+            a++;
+        }
         
-        num++;
-        p[num] = x;
     }
 
     void pop()
     {
-        if (num <= 0)
+        if (a < 0)
         {
             cout << "Стэк пуст" << endl;
         }
         else
         {
-            cout << "Верхний элемент: "<< p[num] << endl;
-            num--;
+            cout << "Верхний элемент: "<< p[size] << endl;
+            size--;
+            a--;
         }
     }
 
     void show()
     {
-        if (num >= 1)
+        if (a >= 0)
         {
             cout << "Все элементы: ";
-            for (int i = num; i >= 1; i--)
+            for (int i = size; i >= 0; i--)
             {
                 cout << p[i] << " ";   
             }
@@ -48,16 +72,15 @@ public:
         delete p;
     }
 
-private:
-    int num = 0;
-    int* p = new int[num];
+
+    
 };
 
 int main()
 {
     setlocale(0, "");
 
-    Stack* stack = new Stack;
+    Stack stack;
     int a, x;
     cout << "1)Добавить элемент в стэк\n";
     cout << "2)Достать верхний элемент стэка\n";
@@ -74,21 +97,20 @@ int main()
         {
             cout << "Введите элемент: ";
             cin >> x;
-            stack->push(x);
+            stack.push(x);
             cout << endl;
         }
         else if (a == 2)
         {
-            stack->pop();
+            stack.pop();
         }
         else if (a == 3)
         {
-            stack->show();
+            stack.show();
         }
         else if (a == 4)
         {
-            stack->end();
-            delete stack;
+            //stack.end();
         }
     } while (a != 4);
     
