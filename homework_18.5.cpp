@@ -5,68 +5,49 @@ using namespace std;
 class Stack
 {
 private:
-    int a;
+    int top = -1;
     int size;
 	int* p;
 
 public:
     Stack() 
     {
-        a = -1;
         size = 0;
         p = new int[size];
     };
 
-    void CreateArray()
+    Stack(int size)
     {
-        int* arr = new int[size];
-        for (int i = size - 1; i >= 0; i--)
-        {
-            arr[i] = p[i];
-        }
-        p = arr;
+        p = new int[size];
     }
- 
-
+   
 
     void push(int x)
     {
-        if (a == -1)
-        {
-            p[size] = x;
-            a++;
-
-        }
-        else
-        {
-            size++;
-            CreateArray();
-            p[size] = x;
-            a++;
-        }
+        top++;
+        p[top] = x;
         
     }
 
     void pop()
     {
-        if (a < 0)
+        if (top < 0)
         {
             cout << "Стэк пуст" << endl;
         }
         else
         {
-            cout << "Верхний элемент: "<< p[size] << endl;
-            size--;
-            a--;
+            cout << "Верхний элемент: "<< p[top] << endl;
+            top--;
         }
     }
 
     void show()
     {
-        if (a >= 0)
+        if (top >= 0)
         {
             cout << "Все элементы: ";
-            for (int i = size; i >= 0; i--)
+            for (int i = top; i >= 0; i--)
             {
                 cout << p[i] << " ";   
             }
