@@ -12,20 +12,24 @@ private:
 public:
     Stack() 
     {
-        size = 0;
+        size = 10;
         p = new int[size];
     };
 
-    Stack(int size)
-    {
-        p = new int[size];
-    }
+   
    
 
     void push(int x)
     {
-        top++;
-        p[top] = x;
+        if (top < size)
+        {
+            top++;
+            p[top] = x;
+        }
+        else
+        {
+            cout << "Стэк полон";
+        }
         
     }
 
